@@ -1,0 +1,18 @@
+{
+  "mysql": {
+    "connectionLimit": 4,
+    "host": "pi3.manjaro",
+    "port": 49154,
+    "user": "root",
+    "password": "root",
+    "database": "av"
+  },
+  "http": {
+    "port": 11451,
+    "private_pem": "src/key/app_private_key.pem",
+    "public_pem": "src/key/app_public_key.pem"
+  },
+  "app": {
+    "admin": ["delong"]
+  }
+}

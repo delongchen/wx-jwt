@@ -1,0 +1,24 @@
+{
+  "name": "702jwt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "@types/koa": "^2.13.4",
+    "@types/koa-router": "^7.4.4",
+    "@types/mysql": "^2.15.19",
+    "@types/node": "^16.7.8",
+    "@types/node-rsa": "^1.1.1",
+    "koa": "^2.13.1",
+    "koa-router": "^10.1.1",
+    "mysql": "^2.18.1",
+    "node-rsa": "^1.1.1",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "test": "ts-node src/core/rsa.ts"
+  }
+}
