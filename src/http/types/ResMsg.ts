@@ -1,3 +1,5 @@
+import {Token} from "../../types/Token";
+
 enum ResStatus {
   'SUCCESS',
   'NO_USER',
@@ -7,6 +9,7 @@ enum ResStatus {
   'NO_TOKEN',
   'TOKEN_EXPIRE',
   'ILLEGAL_TOKEN',
+  'PERMISSION_DENIED',
   'UNKNOWN_ERR'
 }
 
@@ -16,6 +19,7 @@ class ResMsg {
   status?: ResStatus
   msg?: string
   token?: string
+  data?: any
 
   constructor(status: ResStatus, msg: string) {
     this.status = status
@@ -34,6 +38,7 @@ class ResMsg {
   static NO_TOKEN: ResMsg = { status: ResStatus.NO_TOKEN, msg: 'no access-token' }
   static TOKEN_EXPIRE: ResMsg = { status: ResStatus.TOKEN_EXPIRE, msg: 'access-token expire' }
   static ILLEGAL_TOKEN: ResMsg = { status: ResStatus.ILLEGAL_TOKEN, msg: 'illegal access-token' }
+  static PERMISSION_DENIED: ResMsg = { status: ResStatus.PERMISSION_DENIED, msg: 'permission denied' }
 
   static UNKNOWN_ERR = (err: string): ResMsg => ({ status: ResStatus.UNKNOWN_ERR, msg: err })
 }

@@ -21,10 +21,14 @@ const headerCache = bs64(header)
 const exp = 60 * 60 * 24 * 1000
 
 function sign(user: AvUser | undefined) {
+  const userName = user?.id ?? ''
+
   const payload: TokenPayload = {
     exp,
     iat: Date.now(),
-    sub: (adminSet.has(user?.id ?? '') ? 'admin': 'user')
+    sub: (adminSet.has(userName) ? 'admin': 'user'),
+    iss: '你隆哥',
+    aud: userName
   }
 
   const payloadBase64 = bs64(payload)

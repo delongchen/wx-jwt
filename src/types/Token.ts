@@ -6,9 +6,9 @@ interface TokenHeader {
 interface TokenPayload {
   iat: number //签发时间
   exp: number //过期时间
-  iss?: string //签发者
-  sub?: string //面向的用户
-  aud?: string //接收者
+  aud: string //接收者
+  iss: string //签发者
+  sub: 'admin' | 'user' //面向的用户
 }
 
 interface Token {
