@@ -1,4 +1,5 @@
 export default interface AvUser {
-  id?: string,
+  id?: string
   psw?: string
+  uuid?: string
 }

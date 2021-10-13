@@ -19,19 +19,30 @@ const header: TokenHeader = { typ: "JWT", alg: "RS256" }
 const headerCache = bs64(header)
 
 const exp = 60 * 60 * 24 * 1000
+const iss = '反正不是吴翔'
 
-function sign(user: AvUser | undefined) {
+function userToken(user: AvUser | undefined) {
   const userName = user?.id ?? ''
 
-  const payload: TokenPayload = {
-    exp,
+  const result: TokenPayload = {
     iat: Date.now(),
-    sub: (adminSet.has(userName) ? 'admin': 'user'),
-    iss: '你隆哥',
-    aud: userName
+    iss,
+    aud: userName,
+    mate: { uuid: 'todo' },
+    exp,
+    sub: 'user'
   }
 
-  const payloadBase64 = bs64(payload)
+  if (adminSet.has(userName)) {
+    result.exp = exp * 365
+    result.sub = 'admin'
+  }
+
+  return result
+}
+
+function sign(user: AvUser | undefined) {
+  const payloadBase64 = bs64(userToken(user))
   const toCrypto = [headerCache, payloadBase64].join('.')
   const signature = encrypt(getSHA256Of(toCrypto))
 

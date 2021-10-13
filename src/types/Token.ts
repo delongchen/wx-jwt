@@ -3,12 +3,17 @@ interface TokenHeader {
   alg: string //加密方式
 }
 
+interface TokenMate {
+  uuid: string
+}
+
 interface TokenPayload {
   iat: number //签发时间
   exp: number //过期时间
   aud: string //接收者
   iss: string //签发者
-  sub: 'admin' | 'user' //面向的用户
+  sub: 'admin' | 'user' //面向的用户,
+  mate: TokenMate
 }
 
 interface Token {
