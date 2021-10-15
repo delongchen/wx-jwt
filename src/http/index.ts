@@ -1,11 +1,13 @@
 import Koa from 'koa'
 import appConfig from '../config'
 import router from "./router";
+import intercept from './middleware/intercept'
 const cors = require('@koa/cors')
 
 const app = new Koa
 
 app.use(cors())
+  .use(intercept)
   .use(router.routes())
   .use(router.allowedMethods())
 

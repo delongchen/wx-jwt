@@ -3,7 +3,6 @@ import {doCheck} from "./checkAT";
 import {ResMsg, ResStatus} from "../../types/ResMsg";
 import {Token} from "../../../types/Token";
 import { query } from "../../../mysql";
-import { parsePostData } from "../../util";
 import DelReq from "../../types/DelReq";
 
 const { SUCCESS, UNKNOWN_ERR, PERMISSION_DENIED } = ResMsg
@@ -19,8 +18,7 @@ async function doDelete(token: Token, req: DelReq): Promise<ResMsg> {
 const deleteUser: Middleware = async (context, next) => {
   const msg = await doCheck(context.state.token)
   if (msg.status === ResStatus.SUCCESS) {
-    const req = await parsePostData<DelReq>(context)
-    context.body = await doDelete(<Token>msg.data, req)
+    context.body = await doDelete(<Token>msg.data, <DelReq>context.state.body)
   } else {
     context.body = msg
   }

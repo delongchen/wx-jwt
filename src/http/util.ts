@@ -1,13 +1,26 @@
 import { Context } from 'koa'
 
-function parsePostData<T>(ctx: Context): Promise<T> {
-  return new Promise<T>(resolve => {
+function parseJSON(str: string) {
+  try {
+    return JSON.parse(str)
+  } catch (e) {
+    return null
+  }
+}
+
+function parsePostData<T>(ctx: Context) {
+  return new Promise<T>((resolve, reject) => {
     let data = ''
     ctx.req.addListener('data', chunk => {
       data += chunk
     })
     ctx.req.addListener('end', () => {
-      resolve(JSON.parse(data) as T)
+      const result = parseJSON(data)
+      if (result) {
+        resolve(<T>result)
+      } else {
+        reject()
+      }
     })
   })
 }

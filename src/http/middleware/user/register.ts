@@ -1,5 +1,4 @@
 import {Middleware} from "koa";
-import {parsePostData} from "../../util";
 import LoginReq from "../../types/LoginReq";
 import isUserNameExist from "./checkUserName";
 import {ResMsg, ResStatus} from "../../types/ResMsg";
@@ -22,7 +21,7 @@ async function doRegister(req: LoginReq): Promise<ResMsg> {
 }
 
 const register: Middleware = async (context, next) => {
-  context.body = await doRegister(await parsePostData<LoginReq>(context))
+  context.body = await doRegister(<LoginReq>context.state.body)
   await next()
 }
 

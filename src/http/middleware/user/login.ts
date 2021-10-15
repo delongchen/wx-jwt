@@ -1,5 +1,4 @@
 import {Middleware} from 'koa'
-import {parsePostData} from '../../util'
 import {getSHA256Of} from "../../../utils";
 import type LoginReq from '../../types/LoginReq'
 import {ResMsg, ResStatus} from '../../types/ResMsg'
@@ -23,7 +22,7 @@ const checkLogin = async (req: LoginReq): Promise<ResMsg> => {
 }
 
 const login: Middleware = async (context, next) => {
-  context.body = await checkLogin(await parsePostData<LoginReq>(context))
+  context.body = await checkLogin(<LoginReq>context.state.body)
   await next()
 }
 

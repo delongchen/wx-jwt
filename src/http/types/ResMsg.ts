@@ -10,7 +10,8 @@ enum ResStatus {
   'TOKEN_EXPIRE',
   'ILLEGAL_TOKEN',
   'PERMISSION_DENIED',
-  'UNKNOWN_ERR'
+  'UNKNOWN_ERR',
+  'ILLEGAL_BODY'
 }
 
 class ResMsg {
@@ -39,6 +40,7 @@ class ResMsg {
   static TOKEN_EXPIRE: ResMsg = { status: ResStatus.TOKEN_EXPIRE, msg: 'access-token expire' }
   static ILLEGAL_TOKEN: ResMsg = { status: ResStatus.ILLEGAL_TOKEN, msg: 'illegal access-token' }
   static PERMISSION_DENIED: ResMsg = { status: ResStatus.PERMISSION_DENIED, msg: 'permission denied' }
+  static ILLEGAL_BODY: ResMsg = { status: ResStatus.ILLEGAL_BODY, msg: 'parse JSON failed' }
 
   static UNKNOWN_ERR = (err: string): ResMsg => ({ status: ResStatus.UNKNOWN_ERR, msg: err })
 }

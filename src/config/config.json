@@ -13,6 +13,7 @@
     "public_pem": "src/key/app_public_key.pem"
   },
   "app": {
-    "admin": ["delong"]
+    "admin": ["delong"],
+    "log": ""
   }
 }
