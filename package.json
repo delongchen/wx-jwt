@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts | bunyan"
   },
   "devDependencies": {
     "@koa/cors": "^3.1.0",

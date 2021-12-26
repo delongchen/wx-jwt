@@ -1,10 +1,14 @@
 import { createPool, MysqlError, FieldInfo } from 'mysql'
 import appConfig from "../config";
 import { useCleanUp } from '../core/cleanUp'
+import {createLogger} from "bunyan";
 
 const userTable = 'av_user'
+const logger = createLogger({ name: 'mysql', stream: process.stdout })
 
 const pool = createPool(appConfig.mysql)
+logger.info('mysql connected')
+
 useCleanUp(() => pool.end(err => {
   console.log(err ?? "pool released")
 }))
@@ -18,6 +22,7 @@ interface QueryResult<T = any> {
 function query<T>(sql: string, values?: any): Promise<QueryResult<T>> {
   return new Promise(resolve => {
     pool.query(sql, values ?? null, ((err, results, fields) => {
+      logger.info('mysql query')
       resolve({ err, results: <T[]>results, fields })
     }))
   })
