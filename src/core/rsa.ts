@@ -1,10 +1,10 @@
-import { readFileSync, promises } from 'fs'
+import { readFileSync } from 'fs'
 import appConfig from "../config";
 import NodeRSA from "node-rsa";
 
 const { private_pem, public_pem } = appConfig.http
-const privatePem = readFileSync(private_pem, 'utf-8')
-const publicPem = readFileSync(public_pem, 'utf-8')
+const privatePem = readFileSync(`src/${private_pem}`, 'utf-8')
+const publicPem = readFileSync(`src/${public_pem}`, 'utf-8')
 const privateKey = new NodeRSA(privatePem)
 const publicKey = new NodeRSA(publicPem)
 

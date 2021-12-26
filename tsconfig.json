@@ -4,14 +4,16 @@
   ],
   "compilerOptions": {
     "target": "ESNext",
-    "module": "commonjs",
-    "declaration": true,
-    "sourceMap": true,
+    "moduleResolution": "Node",
+    "module": "CommonJS",
+    //"declaration": true,
+    //"sourceMap": true,
     "outDir": "./lib",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true
   }
 }

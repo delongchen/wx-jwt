@@ -1,0 +1,16 @@
+mysql:
+  connectionLimit: 4
+  host: '192.168.2.2'
+  port: 49153
+  user: 'root'
+  password: 'root'
+  database: 'av'
+
+http:
+  port: 11451
+  private_pem: 'key/app_private_key.pem'
+  public_pem: 'key/app_public_key.pem'
+
+app:
+  admin:
+    - delong
