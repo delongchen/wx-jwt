@@ -26,7 +26,6 @@ const webpackConfig = {
     new AddPkgPlugin,
     new CopyWebpackPlugin({
       patterns: [
-        copyFromSrc('key'),
         copyFromSrc('config/config.yml')
       ]
     }),

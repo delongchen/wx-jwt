@@ -1,0 +1,12 @@
+{
+  "name": "702jwt",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node main.js | bunyan"
+  },
+  "devDependencies": {
+    "bunyan": "^1.8.15"
+  }
+}
